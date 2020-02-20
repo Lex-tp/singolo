@@ -21,10 +21,10 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, em, img, strong, sub, sup, b, 
 }
 
 .header-body {
-    display: block;
+    position: relative;
     border-bottom: 6px solid #323746;
     background-color: #2d303a;
-    height: 94px;
+    height: 95px;
 }
 
 .header-wrapper {
@@ -95,9 +95,13 @@ a {
     right: 15px; 
     content: " ";
     background-color: #434759;
-    width: 2px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
+}
+
+.header-body__nav__item:last-child::after {
+    width: 0;
 }
 
 .header-body__nav ul li a:focus{
@@ -120,6 +124,68 @@ a {
     margin: -1px;
     clip: rect(0 0 0 0);
     width: 1px;
-    height: 1px;
-    
+    height: 1px;   
+}
+
+.slider-body {
+    height: 600px;
+    background-color: #f06c64;
+    border-bottom: 6px solid #ea676b;
+}
+
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+.slider-body__back{
+    background: url('assets/images/chev.png') no-repeat;
+    cursor: pointer;
+    width: 16px;
+    margin-left: 4px;
+    margin-top: 281px;
+}
+
+.slider-body__back:hover {
+    cursor: pointer;
+}
+
+.slider-body__back:active {
+    background: url('assets/images/chev_active.png') no-repeat;
+    cursor: pointer;
+}
+
+.slider-body__next{
+    background: url('assets/images/chev.png') no-repeat;
+    transform: scale(-1, 1);
+    cursor: pointer;
+    width: 16px;
+    margin-top: 281px;
+    margin-left: 55px;
+}
+
+.slider-body__next:hover {
+    cursor: pointer;
+}
+
+.slider-body__next:active {
+    background: url('assets/images/chev_active.png') no-repeat;
+    transform: scale(-1, 1);
+    cursor: pointer;
+}
+
+.slider-body__iphone_vertical {
+    background: url('assets/images/iphone_vertical.png') no-repeat;
+    width: 240px;
+    margin-top: 53px;
+    margin-left: 54px;
+}
+
+.slider-body__iphone_horizontal {
+    background: url('assets/images/iphone_horizontal.png') no-repeat;
+    width: 484px;
+    margin-top: 174px;
+    margin-left: 73px;
 }
