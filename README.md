@@ -1,1 +1,1 @@
-https://Lex-tp.github.io/singolo
+https://Lex-tp.github.io/singolo/
