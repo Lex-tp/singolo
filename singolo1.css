@@ -238,6 +238,8 @@ a {
     letter-spacing: -0.1px;
     text-align: justify;
     margin-right: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .services-body__item__caption {
