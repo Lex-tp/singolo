@@ -149,6 +149,7 @@ a {
 }
 
 .slider-body__back:hover {
+    background: url('assets/images/chev_active.png') no-repeat;
     cursor: pointer;
 }
 
@@ -167,6 +168,7 @@ a {
 }
 
 .slider-body__next:hover {
+    background: url('assets/images/chev_active.png') no-repeat;
     cursor: pointer;
 }
 
@@ -407,8 +409,8 @@ a {
 
 .about-us__link:hover {
     cursor: pointer;
-    height: 35px;
-    width: 35px;
+    height: 34px;
+    width: 34px;
 }
 
 .about-us__info {
