@@ -1,2 +1,2 @@
 # Singolo done
-## [singolo](https://lex-tp.github.io/singolo/index.html)
+## [singolo done](https://lex-tp.github.io/singolo/index.html)
