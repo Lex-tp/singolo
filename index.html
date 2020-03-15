@@ -11,34 +11,51 @@
 </head>
 
 <body>
-    <header class="header-body">
+    <header id="home" class="header-body">
         <div class="container header-wrapper">
             <h1 class="caption">SINGOLO</h1>
             <div class="header-body__logo">
-                <span><a href="#">SINGOLO</a>*</span>
+                <span><a href="#home">SINGOLO</a>*</span>
             </div>
             <nav class="header-body__nav">
-                <ul>
-                    <li class="header-body__nav-item"><a href="#">HOME</a></li>
-                    <li class="header-body__nav-item"><a href="#">SERVICES</a></li>
-                    <li class="header-body__nav-item"><a href="#">PORTFOLIO</a></li>
-                    <li class="header-body__nav-item"><a href="#">ABOUT</a></li>
-                    <li class="header-body__nav-item"><a href="#">CONTACT</a></li>
+                <ul id="nav_menu">
+                    <li class="header-body__nav-item"><a href="#home">HOME</a></li>
+                    <li class="header-body__nav-item"><a href="#services">SERVICES</a></li>
+                    <li class="header-body__nav-item"><a href="#portfolio">PORTFOLIO</a></li>
+                    <li class="header-body__nav-item"><a href="#about">ABOUT</a></li>
+                    <li class="header-body__nav-item"><a href="#contact">CONTACT</a></li>
             </nav>
         </div>
     </header>
     <main>
-        <section class="slider-body">
+        <section id="slider-bg" class="slider-body">
             <div class="container">
                 <div class="slider-wrapper">
-                    <div class="slider-body__back"></div>
-                    <div class="slider-body__iphone_vertical"></div>
-                    <div class="slider-body__iphone_horizontal"></div>
-                    <div class="slider-body__next"></div>
+                    <div id="back" class="slider-body__back""></div>
+                    <div id="slider_mobile" class="slider">
+                        <div class="slide">
+                            <div class="slider-body__iphone_vertical">
+                                <div id="screenV" class="screen_vertical"></div>
+                                <div id="buttonV" class="button_vertical"></div>
+                            </div>
+                            <div class="slider-body__iphone_horizontal">
+                                <div id="buttonH" class="button_horizontal"></div>
+                                <div id="screenH" class="screen_horizontal"></div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="slider-body__slide-2">
+                                <div id="screenV2" class="screen_vertical2"></div> 
+                                <div id="buttonV2" class="button_vertical2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="next" class="slider-body__next"></div>
                 </div>
             </div>
         </section>
         <section class="services-body">
+            <a id="services" class="anchor"></a>
             <div class="container">
                 <p class="services-body__title">Our Services</p>
                 <p class="services-body__section">Fusce dapibus, tellus ac cursus commodo, tortor
@@ -99,6 +116,7 @@
         </section>
     </main>
     <section class="portfolio">
+        <a id="portfolio" class="anchor"></a>
         <div class="wrapper">
             <div class="section-header">
                 <span class="portfolio__title">Portfolio</span>
@@ -107,13 +125,13 @@
                         Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
                     </span>
                 </div>
-                <div class="section-header__nav">
-                    <button class="portfolio__button">All</button>
-                    <button class="portfolio__button">Web Design</button>
-                    <button class="portfolio__button">Graphic Design</button>
-                    <button class="portfolio__button">Artwork</button>
+                <div id="portfolioNav" class="section-header__nav">
+                    <button class="portfolio__button" onclick="swipePortfolio()">All</button>
+                    <button class="portfolio__button" onclick="swipePortfolio()">Web Design</button>
+                    <button class="portfolio__button" onclick="swipePortfolio()">Graphic Design</button>
+                    <button class="portfolio__button" onclick="swipePortfolio()">Artwork</button>
                 </div>
-                <div class="portfolio__project">
+                <div id="swipePortfolio" class="portfolio__project">
                     <img class="portfolio__img" src="assets/images/project1.png">
                     <img class="portfolio__img" src="assets/images/project2.png">
                     <img class="portfolio__img" src="assets/images/project3.png">
@@ -131,6 +149,7 @@
         </div>
     </section>
     <section class="about-us">
+        <a id="about" class="anchor"></a>
         <div class="wrapper">
             <div class="section-body">
                 <div class="about-us__title">About Us</div>
@@ -183,7 +202,7 @@
         </div>
     </section>
     <footer>
-        <div class="footer-body">
+        <div id="contact" class="footer-body">
             <div class="wrapper">
                 <div class="footer-body__title">Get a Quote</div>
                 <div class="footer-body__text">
@@ -197,11 +216,10 @@
                         <form>
                             <div class="footer-body__inputs">
                                 <input required type="text" placeholder="Name (Required)">
-                                <input required type="text" placeholder="Email (Required)">
+                                <input required type="email" placeholder="Email (Required)">
                                 <input type="text" placeholder="Subject">
                                 <textarea>Describe your project in detail...</textarea>
-                                <input class="button_sub" type="submit" value="Submit"
-                                    onclick="alert('Форма отправлена!')">
+                                <input class="button_sub" type="submit" value="Submit">
                             </div>
                         </form>
                     </div>
@@ -235,6 +253,7 @@
             </div>
         </div>
     </footer>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
