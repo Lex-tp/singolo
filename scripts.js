@@ -14,6 +14,8 @@ let phoneButtonV2=document.getElementById('buttonV2');
 let phoneScreenV2=document.getElementById('screenV2');
 let imgPortfolio = document.getElementById("swipePortfolio");
 let okButton=document.getElementById('okButton');
+let contactForm=document.getElementById('contactForm');
+
 phoneScreenV.style.opacity='0';
 phoneScreenH.style.opacity='0';
 phoneScreenV2.style.opacity='0';
@@ -40,6 +42,7 @@ okButton.addEventListener('click', () => {
     document.getElementById('mailValue').innerHTML='';
     document.getElementById('subjectValue').innerHTML='';
     document.getElementById('describeValue').innerHTML='';
+    contactForm.reset();
     document.getElementById('resultWindow').classList.add('hidden');
 });
 
