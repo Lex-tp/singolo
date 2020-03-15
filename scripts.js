@@ -25,7 +25,7 @@ navMenu.addEventListener('click', (e) => {
     e.target.classList.add('active');
 });
 
-function showMessage() {
+function showMessagemModal() {
     let name=document.getElementById('name').value.toString();
     let mail=document.getElementById('mail').value.toString();
     let subject=document.getElementById('subject').value.toString();
