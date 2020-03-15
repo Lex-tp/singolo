@@ -13,6 +13,9 @@ let phoneScreenH=document.getElementById('screenH');
 let phoneButtonV2=document.getElementById('buttonV2');
 let phoneScreenV2=document.getElementById('screenV2');
 let imgPortfolio = document.getElementById("swipePortfolio");
+let okButton=document.getElementById('okButton');
+let contactForm=document.getElementById('contactForm');
+
 phoneScreenV.style.opacity='0';
 phoneScreenH.style.opacity='0';
 phoneScreenV2.style.opacity='0';
@@ -20,6 +23,27 @@ phoneScreenV2.style.opacity='0';
 navMenu.addEventListener('click', (e) => {
     navMenu.querySelectorAll('li').forEach(function (item) { item.querySelector('a').classList.remove('active'); });
     e.target.classList.add('active');
+});
+
+function showMessage() {
+    let name=document.getElementById('name').value.toString();
+    let mail=document.getElementById('mail').value.toString();
+    let subject=document.getElementById('subject').value.toString();
+    let describe=document.getElementById('describe').value.toString();
+    document.getElementById('nameValue').innerHTML= Boolean(name)?'Name: '+name:'Без названия';
+    document.getElementById('mailValue').innerHTML=Boolean(mail)?'Mail: '+mail:'Без электронной почты';
+    document.getElementById('subjectValue').innerHTML=Boolean(subject)?'Subject: '+subject:'Без темы';
+    document.getElementById('describeValue').innerHTML=Boolean(describe)?'Description: '+describe:'Без описания';
+    document.getElementById('resultWindow').classList.remove('hidden');
+}
+
+okButton.addEventListener('click', () => {
+    document.getElementById('nameValue').innerHTML='';
+    document.getElementById('mailValue').innerHTML='';
+    document.getElementById('subjectValue').innerHTML='';
+    document.getElementById('describeValue').innerHTML='';
+    contactForm.reset();
+    document.getElementById('resultWindow').classList.add('hidden');
 });
 
 phoneButtonV.addEventListener('click', function(){

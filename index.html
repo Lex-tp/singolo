@@ -126,7 +126,7 @@
                     </span>
                 </div>
                 <div id="portfolioNav" class="section-header__nav">
-                    <button class="portfolio__button" onclick="swipePortfolio()">All</button>
+                    <button class="portfolio__button portfolio__button-active" onclick="swipePortfolio()">All</button>
                     <button class="portfolio__button" onclick="swipePortfolio()">Web Design</button>
                     <button class="portfolio__button" onclick="swipePortfolio()">Graphic Design</button>
                     <button class="portfolio__button" onclick="swipePortfolio()">Artwork</button>
@@ -213,15 +213,25 @@
                 </div>
                 <div class="footer-body__main">
                     <div class="footer-body__form">
-                        <form>
+                        <form id="contactForm" onsubmit="showMessage()">
                             <div class="footer-body__inputs">
-                                <input required type="text" placeholder="Name (Required)">
-                                <input required type="email" placeholder="Email (Required)">
-                                <input type="text" placeholder="Subject">
-                                <textarea>Describe your project in detail...</textarea>
-                                <input class="button_sub" type="submit" value="Submit">
+                                <input id="name" required type="text" placeholder="Name (Required)" maxlength="20">
+                                <input id="mail" required type="email" placeholder="Email (Required)" maxlength="30">
+                                <input id="subject" type="text" placeholder="Subject" maxlength="20">
+                                <textarea id="describe" maxlength="80" placeholder="Describe your project in detail..."></textarea>
+                                <input id="subButton" class="button_sub" type="submit" value="Submit">
                             </div>
                         </form>
+                    </div>
+                    <div id="resultWindow" class="hidden">
+                        <div id="message">
+                            <p><span class="message-title">The letter was sent</span></p>
+                            <p><span id="nameValue"></span></p>
+                            <p><span id="mailValue"></span></p>
+                            <p><span id="subjectValue"></span></p>
+                            <p><span id="describeValue"></span></p>
+                            <input id="okButton" class="message-button" type="button" value="OK"></input>
+                        </div>
                     </div>
                     <div class="footer-body__contacts">
                         <h2>Contact Information</h2>
