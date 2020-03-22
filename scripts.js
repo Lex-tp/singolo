@@ -126,3 +126,46 @@ portfolioNav.addEventListener('click', (e) => {
     portfolioNav.querySelectorAll('button').forEach(function (item) { item.classList.remove('portfolio__button-active'); });
     e.target.classList.add('portfolio__button-active');
 });
+
+//переключение элементов меню
+document.addEventListener('scroll',onScroll);
+
+function onScroll (e) {
+
+    let cursorPos=window.scrollY;
+    let headerScroll=document.querySelectorAll('#container-anchor > .anchor-scroll');
+    let mainScroll=document.querySelectorAll('#container-anchor > main .anchor-scroll');
+    let footerScroll=document.querySelectorAll('#container-anchor > footer .anchor-scroll');
+
+    console.log(cursorPos);
+    headerScroll.forEach((item)=> {
+        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+            navMenu.querySelectorAll('li').forEach(function (el) { 
+                el.querySelector('a').classList.remove('active'); 
+                if(String(item.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
+                    el.querySelector('a').classList.add('active'); 
+                }
+            });
+        }
+    });
+    mainScroll.forEach((item)=> {
+        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+            navMenu.querySelectorAll('li').forEach(function (el) { 
+                el.querySelector('a').classList.remove('active'); 
+                if(String(item.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
+                    el.querySelector('a').classList.add('active'); 
+                }
+            });
+        }
+    });
+    footerScroll.forEach((item)=> {
+        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+            navMenu.querySelectorAll('li').forEach(function (el) { 
+                el.querySelector('a').classList.remove('active'); 
+                if(String(item.getAttribute('id')) === el.querySelector('a').getAttribute('href').substring(1)){
+                    el.querySelector('a').classList.add('active'); 
+                }
+            });
+        }
+    });
+}

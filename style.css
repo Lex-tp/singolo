@@ -449,8 +449,9 @@ button.portfolio__button-active {
     cursor: pointer;
 }
 
-.select-img {
-    border: 5px solid #F06C64;
+img.select-img {
+    outline: 5px solid #F06C64; /* Пунктирная рамка */
+    outline-offset: -5px;
 }
 
 .about-us {
