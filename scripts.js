@@ -1,11 +1,5 @@
 let navMenu = document.getElementById('nav_menu');
 let portfolioNav = document.getElementById('portfolioNav');
-let numberslides = 0;
-let slider = document.getElementById('slider_mobile');
-let sliderItem = document.getElementsByClassName('slide');
-let sliderBg = document.getElementById('slider-bg');
-let backButton = document.getElementById('back');
-let nextButton = document.getElementById('next');
 let phoneButtonV=document.getElementById('buttonV');
 let phoneScreenV=document.getElementById('screenV');
 let phoneButtonH=document.getElementById('buttonH');
@@ -15,6 +9,7 @@ let phoneScreenV2=document.getElementById('screenV2');
 let imgPortfolio = document.getElementById("swipePortfolio");
 let okButton=document.getElementById('okButton');
 let contactForm=document.getElementById('contactForm');
+
 
 phoneScreenV.style.opacity='0';
 phoneScreenH.style.opacity='0';
@@ -26,6 +21,7 @@ navMenu.addEventListener('click', (e) => {
 });
 
 function showMessagemModal() {
+    event.preventDefault();
     let name=document.getElementById('name').value.toString();
     let mail=document.getElementById('mail').value.toString();
     let subject=document.getElementById('subject').value.toString();
@@ -70,44 +66,6 @@ phoneButtonH.addEventListener('click', function(){
     }
 });
 
-nextButton.addEventListener('click', next_slide);
-backButton.addEventListener('click', back_slide);
-sliderItem[1].style.display = 'none';
-function next_slide() {
-    numberslides++;
-    sliderManager();
-}
-
-function back_slide() {
-    numberslides--;
-    sliderManager();
-}
-
-function sliderManager() {
-    console.log(numberslides);
-    if (numberslides < 0) {
-        numberslides = sliderItem.length - 1;
-    }
-    if (numberslides > sliderItem.length - 1) {
-        numberslides = 0;
-    }
-
-    for (let i = 0; i < sliderItem.length; i++) {
-        if(i==numberslides){    
-            if(i%2!=0){
-                sliderBg.style.backgroundColor='#648BF0';
-                sliderBg.style.borderBottom='6px solid #ffffff';
-            }else{
-                sliderBg.style.backgroundColor='#f06c64';
-                sliderBg.style.borderBottom='6px solid #ea676b';
-            }
-            sliderItem[i].style.display = 'flex'; 
-        }else{
-            sliderItem[i].style.display = 'none';
-        }
-    }
-}
-
 function swipePortfolio(){
     let parent = imgPortfolio;
     let frag = document.createDocumentFragment();
@@ -133,39 +91,113 @@ document.addEventListener('scroll',onScroll);
 function onScroll (e) {
 
     let cursorPos=window.scrollY;
-    let headerScroll=document.querySelectorAll('#container-anchor > .anchor-scroll');
-    let mainScroll=document.querySelectorAll('#container-anchor > main .anchor-scroll');
-    let footerScroll=document.querySelectorAll('#container-anchor > footer .anchor-scroll');
+    let headerScroll=document.querySelector('#home');
+    let mainScroll=document.querySelector('#services-scroll');
+    let portfolioScroll=document.querySelector('#portfolio-scroll');
+    let aboutScroll=document.querySelector('#about-scroll');
+    let contactScroll=document.querySelector('#contact');
 
-    console.log(cursorPos);
-    headerScroll.forEach((item)=> {
-        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+        if(headerScroll.offsetTop<=cursorPos && (headerScroll.offsetTop+headerScroll.offsetHeight)> cursorPos){
             navMenu.querySelectorAll('li').forEach(function (el) { 
                 el.querySelector('a').classList.remove('active'); 
-                if(String(item.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
+                if(String(headerScroll.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
                     el.querySelector('a').classList.add('active'); 
                 }
             });
         }
-    });
-    mainScroll.forEach((item)=> {
-        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+        if(mainScroll.offsetTop-100<=cursorPos && (mainScroll.offsetTop-100+mainScroll.offsetHeight)> cursorPos){
             navMenu.querySelectorAll('li').forEach(function (el) { 
                 el.querySelector('a').classList.remove('active'); 
-                if(String(item.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
+                if(String(mainScroll.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
                     el.querySelector('a').classList.add('active'); 
                 }
             });
         }
-    });
-    footerScroll.forEach((item)=> {
-        if(item.offsetTop<=cursorPos && (item.offsetTop+item.offsetHeight)> cursorPos){
+        if(portfolioScroll.offsetTop-100<=cursorPos && (portfolioScroll.offsetTop-100+portfolioScroll.offsetHeight)> cursorPos){
             navMenu.querySelectorAll('li').forEach(function (el) { 
                 el.querySelector('a').classList.remove('active'); 
-                if(String(item.getAttribute('id')) === el.querySelector('a').getAttribute('href').substring(1)){
+                if(String(portfolioScroll.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
                     el.querySelector('a').classList.add('active'); 
                 }
             });
         }
-    });
+        if(aboutScroll.offsetTop-100<=cursorPos && (aboutScroll.offsetTop-100+aboutScroll.offsetHeight-200)> cursorPos){
+            navMenu.querySelectorAll('li').forEach(function (el) { 
+                el.querySelector('a').classList.remove('active'); 
+                if(String(aboutScroll.getAttribute('id')).replace('-scroll','') === el.querySelector('a').getAttribute('href').substring(1)){
+                    el.querySelector('a').classList.add('active'); 
+                }
+            });
+        }
+        if(contactScroll.offsetTop-300<=cursorPos){
+            navMenu.querySelectorAll('li').forEach(function (el) { 
+                el.querySelector('a').classList.remove('active'); 
+                if(String(contactScroll.getAttribute('id')) === el.querySelector('a').getAttribute('href').substring(1)){
+                    el.querySelector('a').classList.add('active'); 
+                }
+            });
+        }
 }
+
+(function() {
+
+    var doc = document,
+        index = 0;
+
+    var Slider = function() {
+        this.box = doc.querySelector('.slider-wrapper');
+        this.slidesBox = doc.querySelector('.slider');
+        this.slides = doc.querySelectorAll('.slide');
+        this.btns = doc.querySelectorAll('.btn');
+        this.size = this.box.clientWidth;
+        this.position();
+        this.carousel();
+
+    };
+
+    Slider.prototype.position = function() {
+        var size = this.size;
+        this.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
+    };
+
+    Slider.prototype.carousel = function() {
+        var i, max = this.btns.length,
+            that = this;
+
+        for (i = 0; i < max; i += 1) {
+            that.btns[i].addEventListener('click', Slider[that.btns[i].id].bind(null,that));
+        }
+    }
+
+    Slider.back = function(box) {
+        box.slidesBox.style.transition = "transform .3s ease-in-out";
+        var size = box.size;
+        index <= 0 ? false : index--;
+        box.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
+        box.jump();
+    };
+
+    Slider.next = function(box) {
+        box.slidesBox.style.transition = "transform .3s ease-in-out";
+        var max = box.slides.length;
+        var size = box.size;
+        index >= max - 1 ? false : index++;
+        box.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
+        box.jump();
+    };
+
+    Slider.prototype.jump = function() {
+        var that = this;
+        var size = this.size;
+        this.slidesBox.addEventListener('transitionend', function() {
+            that.slides[index].id === "firstClone" ? index = 1: index;
+            that.slides[index].id === "lastClone" ? index = that.slides.length-2: index;
+            that.slidesBox.style.transition = "none";
+            that.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
+        });
+    }
+
+
+    new Slider();
+
+})();
