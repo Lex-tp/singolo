@@ -145,7 +145,7 @@ function onScroll (e) {
         index = 0;
 
     var Slider = function() {
-        this.box = doc.querySelector('.slider-wrapper');
+        this.box = doc.querySelector('.container');
         this.slidesBox = doc.querySelector('.slider');
         this.slides = doc.querySelectorAll('.slide');
         this.btns = doc.querySelectorAll('.btn');
