@@ -142,7 +142,7 @@ function onScroll (e) {
 (function() {
 
     var doc = document,
-        index = 0;
+        index = 2;
 
     var Slider = function() {
         this.box = doc.querySelector('.container');
