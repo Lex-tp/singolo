@@ -1,5 +1,6 @@
 let navMenu = document.getElementById('nav_menu');
 let portfolioNav = document.getElementById('portfolioNav');
+let phoneButton=document.getElementById('slider_mobile');
 let phoneButtonV=document.getElementById('buttonV');
 let phoneScreenV=document.getElementById('screenV');
 let phoneButtonH=document.getElementById('buttonH');
@@ -11,9 +12,13 @@ let okButton=document.getElementById('okButton');
 let contactForm=document.getElementById('contactForm');
 
 
-phoneScreenV.style.opacity='0';
-phoneScreenH.style.opacity='0';
-phoneScreenV2.style.opacity='0';
+phoneButton.querySelectorAll('#screenV, #screenV2, #screenH').forEach(function(el){
+    if(el.style.opacity=='0'){
+        el.style.opacity='1';
+    }else{
+        el.style.opacity='0';
+    }
+});
 
 navMenu.addEventListener('click', (e) => {
     navMenu.querySelectorAll('li').forEach(function (item) { item.querySelector('a').classList.remove('active'); });
@@ -42,28 +47,40 @@ okButton.addEventListener('click', () => {
     document.getElementById('resultWindow').classList.add('hidden');
 });
 
-phoneButtonV.addEventListener('click', function(){
-    if(phoneScreenV.style.opacity=='0'){
-        phoneScreenV.style.opacity='1';
-    }else{
-        phoneScreenV.style.opacity='0';
-    }
+phoneButton.querySelectorAll('#buttonV').forEach(function(item){
+    item.addEventListener('click', function(){
+        phoneButton.querySelectorAll('#screenV').forEach(function(el){
+        if(el.style.opacity=='0'){
+            el.style.opacity='1';
+        }else{
+            el.style.opacity='0';
+        }
+    });
+});
 });
 
-phoneButtonV2.addEventListener('click', function(){
-    if(phoneScreenV2.style.opacity=='0'){
-        phoneScreenV2.style.opacity='1';
-    }else{
-        phoneScreenV2.style.opacity='0';
-    }
+phoneButton.querySelectorAll('#buttonV2').forEach(function(item){
+    item.addEventListener('click', function(){
+        phoneButton.querySelectorAll('#screenV2').forEach(function(el){
+        if(el.style.opacity=='0'){
+            el.style.opacity='1';
+        }else{
+            el.style.opacity='0';
+        }
+    });
+});
 });
 
-phoneButtonH.addEventListener('click', function(){
-    if(phoneScreenH.style.opacity=='0'){
-        phoneScreenH.style.opacity='1';
-    }else{
-        phoneScreenH.style.opacity='0';
-    }
+phoneButton.querySelectorAll('#buttonH').forEach(function(item){
+    item.addEventListener('click', function(){
+        phoneButton.querySelectorAll('#screenH').forEach(function(el){
+        if(el.style.opacity=='0'){
+            el.style.opacity='1';
+        }else{
+            el.style.opacity='0';
+        }
+    });
+});
 });
 
 function swipePortfolio(){
