@@ -10,8 +10,8 @@
     <title>Singolo</title>
 </head>
 
-<body>
-    <header id="home" class="header-body">
+<body id="container-anchor">
+    <header id="home" class="header-body anchor-scroll">
         <div class="container header-wrapper">
             <h1 class="caption">SINGOLO</h1>
             <div class="header-body__logo">
@@ -31,9 +31,9 @@
         <section id="slider-bg" class="slider-body">
             <div class="container">
                 <div class="slider-wrapper">
-                    <div id="back" class="slider-body__back""></div>
+                    <div id="back" class="slider-body__back btn""></div>
                     <div id="slider_mobile" class="slider">
-                        <div class="slide">
+                        <div id="lastClone" class="slide">
                             <div class="slider-body__iphone_vertical">
                                 <div id="screenV" class="screen_vertical"></div>
                                 <div id="buttonV" class="button_vertical"></div>
@@ -49,12 +49,28 @@
                                 <div id="buttonV2" class="button_vertical2"></div>
                             </div>
                         </div>
+                        <div class="slide">
+                            <div class="slider-body__iphone_vertical">
+                                <div id="screenV" class="screen_vertical"></div>
+                                <div id="buttonV" class="button_vertical"></div>
+                            </div>
+                            <div class="slider-body__iphone_horizontal">
+                                <div id="buttonH" class="button_horizontal"></div>
+                                <div id="screenH" class="screen_horizontal"></div>
+                            </div>
+                        </div>
+                        <div id="firstClone" class="slide">
+                            <div class="slider-body__slide-2">
+                                <div id="screenV2" class="screen_vertical2"></div> 
+                                <div id="buttonV2" class="button_vertical2"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="next" class="slider-body__next"></div>
+                    <div id="next" class="slider-body__next btn"></div>
                 </div>
             </div>
         </section>
-        <section class="services-body">
+        <section id="services-scroll" class="services-body anchor-scroll">
             <a id="services" class="anchor"></a>
             <div class="container">
                 <p class="services-body__title">Our Services</p>
@@ -115,7 +131,7 @@
             </div>
         </section>
     </main>
-    <section class="portfolio">
+    <section id="portfolio-scroll" class="portfolio anchor-scroll">
         <a id="portfolio" class="anchor"></a>
         <div class="wrapper">
             <div class="section-header">
@@ -148,7 +164,7 @@
             </div>
         </div>
     </section>
-    <section class="about-us">
+    <section id="about-scroll" class="about-us anchor-scroll">
         <a id="about" class="anchor"></a>
         <div class="wrapper">
             <div class="section-body">
@@ -202,7 +218,7 @@
         </div>
     </section>
     <footer>
-        <div id="contact" class="footer-body">
+        <div id="contact" class="footer-body anchor-scroll">
             <div class="wrapper">
                 <div class="footer-body__title">Get a Quote</div>
                 <div class="footer-body__text">
@@ -213,7 +229,7 @@
                 </div>
                 <div class="footer-body__main">
                     <div class="footer-body__form">
-                        <form id="contactForm" onsubmit="showMessage()">
+                        <form id="contactForm" onsubmit="showMessagemModal()">
                             <div class="footer-body__inputs">
                                 <input id="name" required type="text" placeholder="Name (Required)" maxlength="20">
                                 <input id="mail" required type="email" placeholder="Email (Required)" maxlength="30">

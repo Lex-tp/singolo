@@ -146,6 +146,7 @@ a.active {
     display: flex;
     flex-direction: row;
     height: 600px;
+    overflow: hidden;
 }
 
 .slider-body__back{
@@ -206,36 +207,28 @@ a.active {
 .slide {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    margin-right: 110px;
+    margin-right: 83.5px;
+}
+
+.slide:nth-child(1) {
+    left: 100%;
+}
+
+.slide:nth-child(2) {
+    left: 200%;
 }
 
 .slider {
     display: flex;
     flex-direction: row;
     width: 910px;
-    overflow: hidden;
-}
-
-.slider div.slide {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .slider-body__slide-2 {
     background: url('assets/images/Slide-2.jpg') no-repeat;
-    width: 960px;
+    background-size: cover;
+    width: 1024px;
     height: 600px;
-    margin-left:-50px;
 }
 
 .screen_vertical {
@@ -244,6 +237,7 @@ a.active {
     background-color: black;
     margin-top: 65px;
     margin-left: 14px;
+    transition: 0.3s;
 }
 
 .button_vertical {
@@ -261,6 +255,7 @@ a.active {
     background-color: black;
     margin-left: 60px;
     margin-top: -115px;
+    transition: 0.3s;
 }
 
 .button_horizontal {
@@ -278,6 +273,7 @@ a.active {
     background-color: black;
     margin-top: 112px;
     margin-left: 398px;
+    transition: 0.3s;
 }
 
 .button_vertical2 {
@@ -449,8 +445,9 @@ button.portfolio__button-active {
     cursor: pointer;
 }
 
-.select-img {
-    border: 5px solid #F06C64;
+img.select-img {
+    outline: 5px solid #F06C64;
+    outline-offset: -5px;
 }
 
 .about-us {
