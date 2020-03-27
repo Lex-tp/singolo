@@ -268,11 +268,11 @@ a.active {
 }
 
 .screen_vertical2 {
-    width: 200px;
-    height: 354px;
+    width: 201px;
+    height: 356px;
     background-color: black;
     margin-top: 112px;
-    margin-left: 398px;
+    margin-left: 399px;
     transition: 0.3s;
 }
 
