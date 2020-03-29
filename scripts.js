@@ -203,3 +203,29 @@ document.querySelector('#next').addEventListener('click', function (){
         nextItem(currentItem);
     }
 });
+
+let burgerButton = document.getElementById('burger');
+let closeBurgerButton = document.getElementById('hidden-burger');
+let hiddenMenu = document.getElementById('mobile-menu');
+let mobLinks = document.querySelectorAll('#mobile__menu-links a');
+const sections = document.querySelectorAll('section');
+let shadow =document.getElementById('shadow');
+
+burgerButton.addEventListener('click',()=>{
+	hiddenMenu.classList.remove('close');
+	document.querySelector('html').classList.add('scroll-block');
+	shadow.style.display="block";
+});
+
+closeBurgerButton.addEventListener('click',()=>{
+	hiddenMenu.classList.add('close');
+	document.querySelector('html').classList.remove('scroll-block');
+	shadow.style.display="none";
+});
+mobLinks.forEach((el)=>{
+	el.addEventListener('click',()=>{
+		hiddenMenu.classList.add('close');
+		document.querySelector('html').classList.remove('scroll-block');
+		shadow.style.display="none";
+	});
+});
