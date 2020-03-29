@@ -11,7 +11,6 @@ let imgPortfolio = document.getElementById("swipePortfolio");
 let okButton=document.getElementById('okButton');
 let contactForm=document.getElementById('contactForm');
 
-
 phoneButton.querySelectorAll('#screenV, #screenV2, #screenH').forEach(function(el){
     if(el.style.opacity=='0'){
         el.style.opacity='1';
@@ -156,65 +155,51 @@ function onScroll (e) {
         }
 }
 
-(function() {
+let items = document.querySelectorAll('.slide');
+let currentItem=0;
+let isEnable=true;
 
-    var doc = document,
-        index = 2;
+function changeItem(n) {
+    currentItem=(n+items.length) % items.length;
+}
 
-    var Slider = function() {
-        this.box = doc.querySelector('.container');
-        this.slidesBox = doc.querySelector('.slider');
-        this.slides = doc.querySelectorAll('.slide');
-        this.btns = doc.querySelectorAll('.btn');
-        this.size = this.box.clientWidth;
-        this.position();
-        this.carousel();
+function hideItem(direction){
+    isEnable=false;
+    items[currentItem].classList.add(direction);
+    items[currentItem].addEventListener('animationend', function() {
+        this.classList.remove('active',direction);
+    });
+}
 
-    };
+function showItem(direction){   
+    items[currentItem].classList.add('next',direction);
+    items[currentItem].addEventListener('animationend', function() {
+        this.classList.remove('next',direction);
+        this.classList.add('active');
+        isEnable=true;
+    });
+}
 
-    Slider.prototype.position = function() {
-        var size = this.size;
-        this.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
-    };
+function prevItem(n){
+    hideItem('to-right');
+    changeItem(n-1);
+    showItem('from-left');
+}
 
-    Slider.prototype.carousel = function() {
-        var i, max = this.btns.length,
-            that = this;
+function nextItem(n){
+    hideItem('to-left');
+    changeItem(n+1);
+    showItem('from-right');
+}
 
-        for (i = 0; i < max; i += 1) {
-            that.btns[i].addEventListener('click', Slider[that.btns[i].id].bind(null,that));
-        }
+document.querySelector('#back').addEventListener('click', function (){
+    if(isEnable){
+        prevItem(currentItem);
     }
+});
 
-    Slider.back = function(box) {
-        box.slidesBox.style.transition = "transform .3s ease-in-out";
-        var size = box.size;
-        index <= 0 ? false : index--;
-        box.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
-        box.jump();
-    };
-
-    Slider.next = function(box) {
-        box.slidesBox.style.transition = "transform .3s ease-in-out";
-        var max = box.slides.length;
-        var size = box.size;
-        index >= max - 1 ? false : index++;
-        box.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
-        box.jump();
-    };
-
-    Slider.prototype.jump = function() {
-        var that = this;
-        var size = this.size;
-        this.slidesBox.addEventListener('transitionend', function() {
-            that.slides[index].id === "firstClone" ? index = 1: index;
-            that.slides[index].id === "lastClone" ? index = that.slides.length-2: index;
-            that.slidesBox.style.transition = "none";
-            that.slidesBox.style.transform = 'translateX(' + (-index * size) + 'px)';
-        });
+document.querySelector('#next').addEventListener('click', function (){
+    if(isEnable){
+        nextItem(currentItem);
     }
-
-
-    new Slider();
-
-})();
+});
